@@ -133,7 +133,7 @@ namespace MangaReader.Parsers
                 throw new Exception("Error. The number of regex matches don't match.");
             }
 
-            Title _parsedTitle = _descripton == "" ? new Title(_chaptersList, _titleName, this) : new Title(_chaptersList, _descripton, _titleName, this);
+            Title _parsedTitle = new Title(_chaptersList, _descripton, _titleName, this);
 
             Console.WriteLine("Parse title ended.");
             return _parsedTitle;

@@ -17,15 +17,12 @@ namespace MangaReader.Manga
 
         public Title(List<Chapter> chapters, string name, string description, Parser parser)
         {
-            for (int i = 0; i < chapters.Count; i++)
-                Chapters.Add(chapters[i]);
+            Chapters = chapters;
 
             _parser = parser;
-            Description = description;
+            Description = description == "" ? "Описание отсутствует." : description;
             Name = name;
         }
-
-        public Title(List<Chapter> chapters, string name, Parser parser) => new Title(chapters, name, "Описание отсутствует.", parser);
 
         public Chapter InitChapter(int chapter) => Chapters[chapter].Init();
 

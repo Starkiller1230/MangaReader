@@ -14,7 +14,7 @@ namespace MangaReader
         {
             Parser _test0 = new ParserMangaClub();
             TitleLoader _titleLoader = new TitleLoader();
-            _titleLoader.LoadTitle("https://mangaclub.ru/716-onepunch-man-2.html");
+            _titleLoader.LoadTitle("https://readmanga.live/klinok__rassekaiuchii_demonov");
             //Title _title = _test0.GetTitle("https://mangaclub.ru/716-onepunch-man-2.html");
             //_title.InitializeChapter(_title.Chapters[0]);
 

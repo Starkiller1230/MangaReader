@@ -12,7 +12,7 @@ namespace MangaReader.Parsers
         public ParserReadManga()
         {
             // Set title patterns.
-            _titleSourcePattern = new Regex(@"<table class=.table table-hover.>[\w\W]+<div class=.background.><div class=.open-border.>");
+            _titleSourcePattern = new Regex(@"<table class=.table table-hover.>[\w\W]+<h3>Новости<\/h3>");
             _titleNamePattern = new Regex(@"<span class=.name.>(.+)<\/span>");
             _titleDescriptionPattern = new Regex(@"");
 
@@ -29,7 +29,7 @@ namespace MangaReader.Parsers
             _canParsePublishDate = true;
         }
 
-        public override string ToString() => "ReadManпф";
+        public override string ToString() => "ReadManga";
 
     }
 }
