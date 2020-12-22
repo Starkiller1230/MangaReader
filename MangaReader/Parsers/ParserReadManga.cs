@@ -12,7 +12,7 @@ namespace MangaReader.Parsers
         public ParserReadManga()
         {
             // Set title patterns.
-            _titleSourcePattern = new Regex(@"<table class=.table table-hover.>[\w\W]+<h3>Новости<\/h3>");
+            _titleSourcePattern = new Regex(@"<table class=.table table-hover.>[\w\W]+(?=<\/td>\s*<\/tr>)");
             _titleNamePattern = new Regex(@"<span class=.name.>(.+)<\/span>");
             _titleDescriptionPattern = new Regex(@"");
 

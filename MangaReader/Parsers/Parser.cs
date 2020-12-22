@@ -14,7 +14,6 @@ namespace MangaReader.Parsers
     /// </summary>
     internal abstract class Parser
     {
-        protected Title _currentTitle;
         // Title regex patterns.
         protected Regex _titleSourcePattern = new Regex(@"");
         protected Regex _titleNamePattern = new Regex(@"");
@@ -90,7 +89,7 @@ namespace MangaReader.Parsers
             string _descripton = _titleDescriptionPattern.Match(_page).Groups[1].Value;
 
             // Select source element.
-            _page = _titleSourcePattern.Match(_page).Value;
+            //_page = _titleSourcePattern.Match(_page).Value;
 
             // Find chapters sourse.
             MatchCollection _names = default, _urls = default, _publishDates = default;
@@ -123,7 +122,11 @@ namespace MangaReader.Parsers
                                                  (_usePrefixChapterName == true ? _prefixChapterName : "") + _namesList[i + 1],
                                                   _canParsePublishDate == true ? _publishDatesList[i + 1] : ""));
                 }
-                ClearListFromMatches(_chaptersList);
+                _chaptersList.Add(null);
+                _chaptersList.Add(null);
+                _chaptersList.Add(null);
+
+                ClearListFromMatches(ref _chaptersList);
 
                 foreach (var item in _chaptersList)
                     Console.WriteLine($"{item.Name} {item.PublishDate}");
@@ -139,8 +142,10 @@ namespace MangaReader.Parsers
             return _parsedTitle;
         }
 
-        private void ClearListFromMatches(List<Chapter> list)
+        private void ClearListFromMatches(ref List<Chapter> list)
         {
+            list = list.Distinct().Where(i => i != null).ToList();
+
             for (int i = list.Count - 1; i > 0; i--)
             {
                 for (int j = i - 1; j >= 0; j--)
